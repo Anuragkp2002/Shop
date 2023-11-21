@@ -1,0 +1,25 @@
+<html>
+    <body>
+        <table>
+            <tr>
+                <th>Name</th>
+                <th>Address</th>
+                <th>Gender</th>
+                <th>Username</th>
+                
+            </tr>
+            {% for v in vi %}
+            <tr>
+                <td>{{v.Name}}</td>
+                <td>{{v.Address}}</td>
+                <td>{{v.Gender}}</td>
+                <td>{{v.Username}}</td>
+                <td><a href="{% url 'delete' v.id %}" >Delete</a></td>
+                <td><a href="{% url 'edit' v.id %}" >edit</a></td>
+            </tr>
+
+            {% endfor %}
+        </table>
+
+    </body>
+</html>

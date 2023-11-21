@@ -1,0 +1,23 @@
+<li><a href="{% url 'register' %}">register</a></li>
+<li><a href="{% url 'login' %}">login</a></li>
+<li><a href="{% url 'imageupload' %}">imageupload</a></li>
+<li><a href="{% url 'viewimage' %}">viewimage</a></li>
+<li><a href="{% url 'dropdownbinding' %}">dropdown binding</a></li>
+<li><a href="{% url 'jquerylink' %}">click here</a></li>
+<li><a href="{% url 'educationdetails'%}">educationdetails</a>
+
+
+
+
+
+{% if messages %}
+    {% for msg in messages %}
+    <script>
+        alert('{{msg}}')
+        </script>
+    {% endfor %}
+
+    {% endif %}
+
+
+    

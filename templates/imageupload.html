@@ -1,0 +1,17 @@
+<html>
+    <body>
+        <form method="post" action="{% url 'imageAction' %}" enctype="multipart/form-data">
+            {% csrf_token %}
+        <table>
+            <tr>
+                <th>Image</th>
+                <td><input type="file" name="file"></td>
+            </tr>
+            <tr>
+                <th></th>
+                <td><input type="submit" value="Upload"></td>
+            </tr>
+        </table> 
+        </form>           
+    </body>    
+</html>    

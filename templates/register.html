@@ -1,0 +1,98 @@
+<html>
+    <body>
+        <script type="text/javascript">
+            function validation(){
+                var alpha=/^[a-zA-Z]+$/;
+                var num=/^[0-9]+$/;
+                var email=/^[\w\-\.\+]+@[a-zA-Z0-9\.\-]+\.[a-zA-Z0-9]{2,4}$/;
+
+                var name=document.getElementById('name');
+               var address=document.getElementById('address');
+               var gender=document.myform.gender;
+               var username=document.getElementById('username');
+               var password=document.getElementById('password');
+
+                if(name.value.length == 0)
+                {
+                    alert("enter name");
+                    return false;
+                }
+                else if(!name.value.match(alpha))
+                {
+                    alert("invalid name");
+                    name.focus();
+                    return false;
+                }
+                else if(address.value.length == 0)
+                {
+                    alert("enter address");
+                    return false;
+                }
+                else if(gender[0].checked ==false && gender[1].checked ==false)
+                {
+                    alert("enter gender");
+                    return false;
+                }
+                else if(username.value.length == 0)
+                {
+                    alert("Enter username");
+                    return false;
+                }
+                else if(!username.value.match(email))
+                {
+                    alert("inavlid email");
+                    username.focus();
+                    return false;
+                }
+                else if(password.value.length == 0)
+                {
+                    alert("Enter password")
+                    return false;
+                }
+                else
+                {
+                    return true;
+                }
+            }
+        </script>
+        <table>
+            <form method="post" action="{% url 'registerAction' %}" name="myform">
+                {% csrf_token %}
+            <tr>
+                <th>Name</th>
+                <td><input type="text" name="name" id="name"></td>
+            </tr>
+            <tr>
+                <th>Address</th>
+                <td><textarea name="address" cols="21" rows="6" id="address"></textarea></td>
+            </tr>
+            <tr>
+                <th>Gender</th>
+                <td><input type="radio" name="gender" id="gender" value="Male">Male
+                    <input type="radio" name="gender" value="Female">Female</td>
+            </tr>
+            <tr>
+                <th>Username</th>
+                <td><input type="text" name="Username" id="username"></td>
+            </tr>
+            <tr>
+                <th>Password</th>
+                <td><input type="text" name="Password" id="password"></td>
+            </tr>
+            <tr>
+                <th></th>
+                <td><input type="submit" value="register" onclick="return validation()"></td>
+            </tr>
+            </form>
+        </table>
+    </body>
+
+    {% if messages %}
+    {% for msg in messages %}
+    <script>
+        alert('{{msg}}')
+        </script>
+    {% endfor %}
+
+    {% endif %}
+</html>
